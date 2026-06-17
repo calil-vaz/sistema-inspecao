@@ -70,6 +70,7 @@ function openModal(editId = null) {
             document.getElementById('local-title').value = record.title;
             document.getElementById('observations').value = record.observations;
             
+            // Preencher avaliações
             for (const [key, value] of Object.entries(record.evaluations)) {
                 const radio = recordForm.querySelector(`input[name="${key}"][value="${value}"]`);
                 if (radio) radio.checked = true;
@@ -157,8 +158,7 @@ function saveRecord() {
 
     const evaluations = {};
     const evalNames = [
-        'facilidade_abertura', 'antiaprisionamento', 'alarmes_porta', 
-        'protetor_porta', 'evaporadora', 'piso', 'paineis', 'relatorio'
+        'alarmes_porta', 'protetor_porta', 'evaporadora', 'piso', 'paineis'
     ];
     
     let allAnswered = true;
@@ -344,14 +344,11 @@ async function generatePDF() {
         doc.text(record.title, 20, 25);
 
         const tableData = [
-            ['Facilidade de abertura das portas', record.evaluations.facilidade_abertura],
-            ['Sistema Antiaprisionamento', record.evaluations.antiaprisionamento],
             ['Alarmes de Porta Aberta', record.evaluations.alarmes_porta],
             ['Protetor de Porta', record.evaluations.protetor_porta],
             ['Evaporadora', record.evaluations.evaporadora],
             ['Piso', record.evaluations.piso],
-            ['Painéis', record.evaluations.paineis],
-            ['Relatório', record.evaluations.relatorio]
+            ['Painéis', record.evaluations.paineis]
         ];
 
         doc.autoTable({
