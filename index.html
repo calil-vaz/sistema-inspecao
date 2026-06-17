@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspeção de Refrigeração - Grupo Pereira</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="logo-grupo-pereira.png" alt="Logo Grupo Pereira" class="logo">
+                <h1>Relatório de Inspeção</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="header-form" class="card">
+            <h2>Dados da Inspeção</h2>
+            <form id="inspection-header">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="loja">Loja *</label>
+                        <input type="text" id="loja" required placeholder="Ex: Loja 01">
+                    </div>
+                    <div class="form-group">
+                        <label for="bandeira">Bandeira *</label>
+                        <input type="text" id="bandeira" required placeholder="Ex: Fort Atacadista">
+                    </div>
+                    <div class="form-group">
+                        <label for="colaborador">Colaborador *</label>
+                        <input type="text" id="colaborador" required placeholder="Nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="matricula">Matrícula *</label>
+                        <input type="text" id="matricula" required placeholder="Número da matrícula">
+                    </div>
+                    <div class="form-group">
+                        <label for="data">Data *</label>
+                        <input type="date" id="data" required>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="records-section">
+            <div class="section-header">
+                <h2>Portas / Locais</h2>
+                <button id="btn-generate-pdf" class="btn-primary">
+                    <i class="fas fa-file-pdf"></i> Gerar Relatório PDF
+                </button>
+            </div>
+            <div id="records-container" class="records-grid">
+            </div>
+        </section>
+    </main>
+
+    <button id="fab-add" class="fab" title="Adicionar Porta/Local">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <div id="modal-container" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title-text">Adicionar Porta / Local</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="record-form">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label for="local-title">Título da Porta / Local *</label>
+                    <input type="text" id="local-title" required placeholder="Ex: Câmara Fria Açougue">
+                </div>
+
+                <div class="evaluations-container">
+                    <h3>Avaliações Obrigatórias</h3>
+                    
+                    <div class="evaluation-group">
+                        <h4>1. Facilidade de abertura das portas</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="facilidade_abertura">
+                                <span>Estrutura da porta, alavanca, puxadores, guias, roldanas, caixilhos</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="facilidade_abertura" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="facilidade_abertura" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>2. Sistema Antiaprisionamento</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="antiaprisionamento">
+                                <span>Botoeira, alarme sonoro e luminoso</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="antiaprisionamento" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="antiaprisionamento" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>3. Alarmes de Porta Aberta</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="alarmes_porta">
+                                <span>Sirenes e fim de curso</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="alarmes_porta" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="alarmes_porta" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>4. Protetor de Porta</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="protetor_porta">
+                                <span>Protetor de circulação</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="protetor_porta" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="protetor_porta" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>5. Evaporadora</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="evaporadora">
+                                <span>Evaporadora, resistências, drenos, cortina flexível</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="evaporadora" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="evaporadora" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>6. Piso</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="piso">
+                                <span>Estado geral do piso e grelhas</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="piso" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="piso" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>7. Painéis</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="paineis">
+                                <span>Batidas, encharcamento, descolamentos</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="paineis" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="paineis" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="evaluation-group">
+                        <h4>8. Relatório</h4>
+                        <div class="eval-items">
+                            <div class="eval-item" data-category="relatorio">
+                                <span>Termo entrega, NR-36, condições de operação</span>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="relatorio" value="Sim" required> Sim</label>
+                                    <label><input type="radio" name="relatorio" value="Não"> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="observations">Observações Gerais</label>
+                    <textarea id="observations" rows="3" placeholder="Digite observações se houver..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagens (Câmera ou Galeria)</label>
+                    <div class="upload-container">
+                        <label for="image-upload" class="upload-label">
+                            <i class="fas fa-camera"></i> Adicionar Imagens
+                        </label>
+                        <input type="file" id="image-upload" accept="image/*" multiple hidden>
+                        <div id="image-preview" class="image-preview-grid"></div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary close-modal">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
