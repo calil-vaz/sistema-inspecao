@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #e30613; 
+    --primary-color: #e30613; /* Vermelho Grupo Pereira */
     --secondary-color: #2c3e50;
     --bg-color: #f4f7f6;
     --card-bg: #ffffff;
@@ -219,6 +219,7 @@ input:focus, textarea:focus {
     transform: scale(1.1) rotate(90deg);
 }
 
+/* Modal */
 .modal {
     display: none;
     position: fixed;
