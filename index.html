@@ -25,7 +25,7 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="loja">Loja *</label>
-                        <input type="text" id="loja" required placeholder="Ex: Loja 295">
+                        <input type="text" id="loja" required placeholder="Ex: Loja 01">
                     </div>
                     <div class="form-group">
                         <label for="bandeira">Bandeira *</label>
@@ -55,14 +55,17 @@
                 </button>
             </div>
             <div id="records-container" class="records-grid">
+                <!-- Cards serão inseridos aqui -->
             </div>
         </section>
     </main>
 
+    <!-- Floating Action Button -->
     <button id="fab-add" class="fab" title="Adicionar Porta/Local">
         <i class="fas fa-plus"></i>
     </button>
 
+    <!-- Modal de Cadastro -->
     <div id="modal-container" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -79,31 +82,7 @@
                 <div class="evaluations-container">
                     <h3>Avaliações Obrigatórias</h3>
                     
-                    <div class="evaluation-group">
-                        <h4>1. Facilidade de abertura das portas</h4>
-                        <div class="eval-items">
-                            <div class="eval-item" data-category="facilidade_abertura">
-                                <span>Estrutura da porta, alavanca, puxadores, guias, roldanas, caixilhos</span>
-                                <div class="radio-group">
-                                    <label><input type="radio" name="facilidade_abertura" value="Sim" required> Sim</label>
-                                    <label><input type="radio" name="facilidade_abertura" value="Não"> Não</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="evaluation-group">
-                        <h4>2. Sistema Antiaprisionamento</h4>
-                        <div class="eval-items">
-                            <div class="eval-item" data-category="antiaprisionamento">
-                                <span>Botoeira, alarme sonoro e luminoso</span>
-                                <div class="radio-group">
-                                    <label><input type="radio" name="antiaprisionamento" value="Sim" required> Sim</label>
-                                    <label><input type="radio" name="antiaprisionamento" value="Não"> Não</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="evaluation-group">
                         <h4>3. Alarmes de Porta Aberta</h4>
@@ -170,18 +149,7 @@
                         </div>
                     </div>
 
-                    <div class="evaluation-group">
-                        <h4>8. Relatório</h4>
-                        <div class="eval-items">
-                            <div class="eval-item" data-category="relatorio">
-                                <span>Termo entrega, NR-36, condições de operação</span>
-                                <div class="radio-group">
-                                    <label><input type="radio" name="relatorio" value="Sim" required> Sim</label>
-                                    <label><input type="radio" name="relatorio" value="Não"> Não</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="form-group">
